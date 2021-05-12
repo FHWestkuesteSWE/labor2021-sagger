@@ -853,7 +853,7 @@
 <XPD:REF name="Specializations[2]">C3g3ll5Ge0aQfegqb58jFQAA</XPD:REF>
 <XPD:ATTR name="#Operations" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="Operations[0]" type="UMLOperation" guid="Bp4oa7Q1BkWtsuqWW4TJrQAA">
-<XPD:ATTR name="Name" type="string">setCalue (): bool</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">setValue (): bool</XPD:ATTR>
 <XPD:REF name="Owner">+oQoY19ZzEuG+xHkYRd24AAA</XPD:REF>
 </XPD:OBJ>
 <XPD:ATTR name="#Attributes" type="integer">2</XPD:ATTR>
