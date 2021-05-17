@@ -53,8 +53,14 @@ Simple Server: just replies by echoing
 */
 void BasicServer::processRequest(char req[], char ans[]) {
 	strncpy(ans, req, std::min<int>(max_length,strlen(ans)+1));
+
+
+
 }
 
 BasicServer::~BasicServer()
 {
 }
+
+
+
