@@ -23,33 +23,14 @@ int main(int argc, char* argv[])
         cout << "----------------------------------------------------" << endl;
         cout << "Ihre Wahl: ";
         cin >> wahl;
-        cout << endl;
-        if (wahl != 0)
-        {
-            switch (wahl) {
-            case '1': // req zusammenbauen
-                strncpy_s(req, "1", 1);
-                c.sendRequest(req, ans);
-                cout << req << endl;
-                cout << ans << endl;
-                break;
-            default: cout << req;
-            }
-        }
-            //req zusammenbauen
-            //sprintf_s(char_wahl, "%c", wahl );
-            //strcpy_s(req, char_wahl[0],char_wahl[1]);
-            //req[0] = char_wahl[0];
-            //req[1] = char_wahl[1];
-            
-            /*strcpy_s(req, wahl, 1);
-            cout << req;
-            
-            c.sendRequest(req, ans);
-            cout << " fuer den Folgenden Raum liegen die nachfolgenden Daten vor " << endl;
-           
-            cout << ans << endl;
-        }
+       
+        strncpy_s(req, &wahl, 1);
+   
+        c.sendRequest(req, ans);
+        cout << " fuer Raum " << wahl << " liegen die nachfolgenden Daten vor: " << endl;
+        
+        cout << ans << endl;
+        
         /*switch (wahl) {
         case 't': // req zusammenbauen
             strncpy_s(req, "get Temp", 10);
