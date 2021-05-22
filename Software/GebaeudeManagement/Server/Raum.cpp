@@ -10,8 +10,19 @@ string Raum::getVerantw() {
 }
 
 
-bool Raum::setVerantw(int raumNr, string verantw) {
-	return false;
+void Raum::setVerantw(string req) {
+	for (int i = 2; i < req.length(); i++)
+	{
+		if (req[i] != NULL)
+		{
+			this->verantw = "";
+			this->verantw = this->verantw + req[i];
+		}
+		else
+		{
+			break;
+		}
+	}
 }
 
 int Raum::getRnr()

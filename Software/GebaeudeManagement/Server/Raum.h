@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "TempSensor.h"
 using namespace std;
 
 class Raum
@@ -7,9 +8,10 @@ class Raum
 	public: 
 		int rnr;
 		string verantw;
+		TempSensor tempSensor; 
 
 		string getVerantw();
-		bool setVerantw(int raumNr, string verantw);
+		void setVerantw(string req);
 		int getRnr();
 
 		Raum(int nr = 0, string verantw = "");

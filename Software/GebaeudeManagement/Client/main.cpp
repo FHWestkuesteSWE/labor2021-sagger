@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Client.h"
+#include <string>
 
 using namespace std;
 int main(int argc, char* argv[])
@@ -27,9 +28,35 @@ int main(int argc, char* argv[])
         strncpy_s(req, &wahl, 1);
    
         c.sendRequest(req, ans);
-        cout << " fuer Raum " << wahl << " liegen die nachfolgenden Daten vor: " << endl;
+        cout << "Fuer Raum " << wahl << " liegen die nachfolgenden Daten vor: " << endl;
         
-        cout << ans << endl;
+        cout << "Raumverantwortlicher: " << ans << endl;
+
+        cout << "Was wollen Sie tun?" << endl;
+        cout << "1. Raumverantwortlichen aendern? (v)" << endl;
+        
+        cin >> wahl; 
+        switch (wahl)
+        {
+        case 'v':
+
+                req[1] = wahl;
+                //strncpy_s(req, &wahl, 1);
+                cout << endl<< "geben sie einen neuen verantwortlichen ein:" << endl;
+                string vant;
+                cin >> vant;
+                for (int i=2 ; i<vant.length()+2; i++)
+                {
+                    req[i] = vant[i - 2];
+                }
+                c.sendRequest(req, ans);
+                cout << "Raumverantwortlicher: " << ans << endl;
+                break;
+
+
+
+		}
+
         
         /*switch (wahl) {
         case 't': // req zusammenbauen
