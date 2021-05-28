@@ -15,6 +15,7 @@ class Raum
 		int getRnr();
 
 		Raum(int nr = 0, string verantw = "");
+		
 
 };
 

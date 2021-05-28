@@ -5,7 +5,7 @@ class Sensor
 		float wert; 
 		int nr; 
 
-		float getValue(int nr);
+		float getValue();
 
 };
 

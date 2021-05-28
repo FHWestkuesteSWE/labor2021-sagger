@@ -9,7 +9,7 @@ constexpr int FLOAT_MAX = 100;
 
 using std::setprecision;
 
-float getValue(int nr)
+float getValue()
 {
 
 	random_device rd;

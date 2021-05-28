@@ -3,31 +3,20 @@
 #include <string.h>
 #include <algorithm>
 #include "Raum.h"
+#include <stdio.h>
 
 Server::Server()
 {
-	
 }
 
 
 void Server::start(char port[]) {
 		
 	BasicServer::start(port);
-	
 }
 
 void Server::processRequest(char req[], char ans[]) {
 
-	Raum* R1 = new Raum(1, "Laura Gersmeier");
-	Raum* R2 = new Raum(2, "Eike Sagasser");
-	Raum* R3 = new Raum(3, "Hans Meier");
-	Raum* R4 = new Raum(4, "Hannelore Mais");
-	Raum* R5 = new Raum(5, "Ernst Kuzorra");
-	Raum* R6 = new Raum(6, "Heinz Tomate");
-	Raum* R7 = new Raum(7, "Ulla Richter");
-	Raum* R8 = new Raum(8, "Werner Hausmann");
-	Raum* R9 = new Raum(9, "Erna Kunze");
-	
 	char* test;
 
 	switch (req[0])
@@ -43,6 +32,19 @@ void Server::processRequest(char req[], char ans[]) {
 				test = new char[R1->verantw.length() + 1];
 				strcpy(test, R1->getVerantw().c_str());
 				strncpy(ans, test, std::min<int>(1024, strlen(ans) + 1));
+			}
+			else
+			{
+				if (req[1] == 't')
+				{
+					float rTemp = R1->tempSensor.getValue();
+					string sTemp = to_string(rTemp);
+					char cTemp[sTemp.length() + 1];
+
+					strcpy(cTemp, sTemp);
+					strncpy(ans, cTemp, std::min<int>(1024, strlen(ans) + 1));
+					
+				}
 			}
 				
 			break;
@@ -161,10 +163,6 @@ void Server::processRequest(char req[], char ans[]) {
 			strcpy(test, "Raum existiert nicht");
 			strncpy(ans, test, std::min<int>(1024, strlen(ans) + 1));
 	}
-
-	
-	
-
 }
 
 Server::~Server()

@@ -11,11 +11,11 @@ string Raum::getVerantw() {
 
 
 void Raum::setVerantw(string req) {
+	this->verantw = "";
 	for (int i = 2; i < req.length(); i++)
 	{
 		if (req[i] != NULL)
 		{
-			this->verantw = "";
 			this->verantw = this->verantw + req[i];
 		}
 		else

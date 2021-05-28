@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
     char ans[1024];
     char wahl;
     do {
-        std::cout << "Gebaeedeleitsystem digitales Testgebaude\n"<<endl;
+        cout << "Gebaeedeleitsystem digitales Testgebaude\n"<<endl;
         cout << "Welchen Raum wollen sie auswaehlen?" << endl;
         cout << "----------------------------------------------------" << endl;
         cout << "Bitte geben sie die Raumnummer an \t" << endl;
@@ -25,49 +25,66 @@ int main(int argc, char* argv[])
         cout << "Ihre Wahl: ";
         cin >> wahl;
        
+        if (wahl == '0')
+        {
+            break;
+        }
+
+
         strncpy_s(req, &wahl, 1);
    
         c.sendRequest(req, ans);
         cout << "Fuer Raum " << wahl << " liegen die nachfolgenden Daten vor: " << endl;
-        
-        cout << "Raumverantwortlicher: " << ans << endl;
-
-        cout << "Was wollen Sie tun?" << endl;
-        cout << "1. Raumverantwortlichen aendern? (v)" << endl;
-        
-        cin >> wahl; 
-        switch (wahl)
+        bool gleich = strcmp(ans, "Raum existiert nicht");
+        if (!gleich)
         {
-        case 'v':
+            // strings sind gleich -> Rückgabewert von strcmp false
+            cout << ans << endl;
+		}
+        else
+        {
+            cout << "Raumverantwortlicher: " << ans << endl;
+
+            cout << "Was wollen Sie tun?" << endl;
+            cout << "1. Raumverantwortlichen aendern? (v)" << endl;
+            cout << "2. Raumtemperatur anzeigen? (t)" << endl;
+
+            cin >> wahl;
+            switch (wahl)
+            {
+            case 'v':
 
                 req[1] = wahl;
                 //strncpy_s(req, &wahl, 1);
-                cout << endl<< "geben sie einen neuen verantwortlichen ein:" << endl;
+                cout << endl << "Geben Sie einen neuen Verantwortlichen ein:" << endl;
                 string vant;
+                getline(cin, vant);
                 cin >> vant;
-                for (int i=2 ; i<vant.length()+2; i++)
+
+                for (int i = 2; i < sizeof(req); i++)
                 {
                     req[i] = vant[i - 2];
+
+                    if (i >= vant.length() + 2)
+                    {
+                        break;
+                    }
                 }
                 c.sendRequest(req, ans);
+
                 cout << "Raumverantwortlicher: " << ans << endl;
                 break;
 
+            case 't':
+                req[1] = wahl;
+                c.sendRequest(req, ans);
+                break;
 
-
-		}
-
-        
-        /*switch (wahl) {
-        case 't': // req zusammenbauen
-            strncpy_s(req, "get Temp", 10);
-            c.sendRequest(req, ans);
-            
-            cout << ans;
-            break;
-        default:;*/
-
-        //}
-    } while (wahl ==0 );
+            default:
+                break;
+            }
+        }      
+      
+    } while (wahl != '0' );
 }
 
