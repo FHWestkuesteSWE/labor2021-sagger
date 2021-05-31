@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BasicServer.cpp" />
+    <ClCompile Include="GebaeudeKonfiguration.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Raum.cpp" />
     <ClCompile Include="Sensor.cpp" />
@@ -158,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicServer.h" />
+    <ClInclude Include="GebaeudeKonfiguration.h" />
     <ClInclude Include="Raum.h" />
     <ClInclude Include="Sensor.h" />
     <ClInclude Include="Server.h" />

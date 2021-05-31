@@ -9,6 +9,7 @@ int main(int argc, char* argv[]) {
 	Server s;
 
 	s.start(argv[1]); // Server starten
+
 	
 
 	return 0;

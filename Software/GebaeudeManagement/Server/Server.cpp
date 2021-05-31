@@ -4,6 +4,10 @@
 #include <algorithm>
 #include "Raum.h"
 #include <stdio.h>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <iomanip>
 
 Server::Server()
 {
@@ -13,11 +17,37 @@ Server::Server()
 void Server::start(char port[]) {
 		
 	BasicServer::start(port);
+	string filename;
+	cout << "Datei: ";
+	cin >> filename;
+
+	ifstream input(filename);
+
+	if (!input)
+	{
+		std::cerr << "Datei beim Oeffnen der Datei " << filename << "\n";
+		
+	}
+
+	std::string line;
+
+	while (std::getline(input, line))
+	{
+		std::cout << line << '\n';
+	}
+	
+
+
+
 }
 
 void Server::processRequest(char req[], char ans[]) {
 
 	char* test;
+	char* cTemp;
+	float rTemp;
+	string sTemp /*= to_string(rTemp)*/;
+	stringstream ss;
 
 	switch (req[0])
 	{
@@ -37,13 +67,19 @@ void Server::processRequest(char req[], char ans[]) {
 			{
 				if (req[1] == 't')
 				{
-					float rTemp = R1->tempSensor.getValue();
-					string sTemp = to_string(rTemp);
-					char cTemp[sTemp.length() + 1];
-
-					strcpy(cTemp, sTemp);
+					rTemp = R1->tempSensor.getValue();
+					ss << setprecision(3) << rTemp;
+					sTemp = ss.str();
+					cTemp = new char[sTemp.length() + 1];
+					strcpy(cTemp, sTemp.c_str());
 					strncpy(ans, cTemp, std::min<int>(1024, strlen(ans) + 1));
+
 					
+					
+				}
+				else
+				{
+					;
 				}
 			}
 				
@@ -60,6 +96,25 @@ void Server::processRequest(char req[], char ans[]) {
 				strcpy(test, R2->getVerantw().c_str());
 				strncpy(ans, test, std::min<int>(1024, strlen(ans) + 1));
 			}
+			else
+			{
+				if (req[1] == 't')
+				{
+					rTemp = R2->tempSensor.getValue();
+					ss << setprecision(3) << rTemp;
+					sTemp = ss.str();
+					cTemp = new char[sTemp.length() + 1];
+					strcpy(cTemp, sTemp.c_str());
+					strncpy(ans, cTemp, std::min<int>(1024, strlen(ans) + 1));
+
+
+
+				}
+				else
+				{
+					;
+				}
+			}
 				
 			break;
 
@@ -73,6 +128,25 @@ void Server::processRequest(char req[], char ans[]) {
 				test = new char[R3->verantw.length() + 1];
 				strcpy(test, R3->getVerantw().c_str());
 				strncpy(ans, test, std::min<int>(1024, strlen(ans) + 1));
+			}
+			else
+			{
+				if (req[1] == 't')
+				{
+					rTemp = R3->tempSensor.getValue();
+					ss << setprecision(3) << rTemp;
+					sTemp = ss.str();
+					cTemp = new char[sTemp.length() + 1];
+					strcpy(cTemp, sTemp.c_str());
+					strncpy(ans, cTemp, std::min<int>(1024, strlen(ans) + 1));
+
+
+
+				}
+				else
+				{
+					;
+				}
 			}
 				
 			break;
@@ -88,6 +162,25 @@ void Server::processRequest(char req[], char ans[]) {
 				strcpy(test, R4->getVerantw().c_str());
 				strncpy(ans, test, std::min<int>(1024, strlen(ans) + 1));
 			}
+			else
+			{
+				if (req[1] == 't')
+				{
+					rTemp = R4->tempSensor.getValue();
+					ss << setprecision(3) << rTemp;
+					sTemp = ss.str();
+					cTemp = new char[sTemp.length() + 1];
+					strcpy(cTemp, sTemp.c_str());
+					strncpy(ans, cTemp, std::min<int>(1024, strlen(ans) + 1));
+
+
+
+				}
+				else
+				{
+					;
+				}
+			}
 			break;
 
 		case '5':
@@ -100,6 +193,25 @@ void Server::processRequest(char req[], char ans[]) {
 				test = new char[R5->verantw.length() + 1];
 				strcpy(test, R5->getVerantw().c_str());
 				strncpy(ans, test, std::min<int>(1024, strlen(ans) + 1));
+			}
+			else
+			{
+				if (req[1] == 't')
+				{
+					rTemp = R5->tempSensor.getValue();
+					ss << setprecision(3) << rTemp;
+					sTemp = ss.str();
+					cTemp = new char[sTemp.length() + 1];
+					strcpy(cTemp, sTemp.c_str());
+					strncpy(ans, cTemp, std::min<int>(1024, strlen(ans) + 1));
+
+
+
+				}
+				else
+				{
+					;
+				}
 			}
 				
 			break;
@@ -115,6 +227,25 @@ void Server::processRequest(char req[], char ans[]) {
 				strcpy(test, R6->getVerantw().c_str());
 				strncpy(ans, test, std::min<int>(1024, strlen(ans) + 1));
 			}
+			else
+			{
+				if (req[1] == 't')
+				{
+					rTemp = R6->tempSensor.getValue();
+					ss << setprecision(3) << rTemp;
+					sTemp = ss.str();
+					cTemp = new char[sTemp.length() + 1];
+					strcpy(cTemp, sTemp.c_str());
+					strncpy(ans, cTemp, std::min<int>(1024, strlen(ans) + 1));
+
+
+
+				}
+				else
+				{
+					;
+				}
+			}
 				
 			break;
 
@@ -129,6 +260,26 @@ void Server::processRequest(char req[], char ans[]) {
 				strcpy(test, R7->getVerantw().c_str());
 				strncpy(ans, test, std::min<int>(1024, strlen(ans) + 1));
 			}
+			else
+			{
+				if (req[1] == 't')
+				{
+					rTemp = R7->tempSensor.getValue();
+					ss << setprecision(3) << rTemp;
+					sTemp = ss.str();
+					cTemp = new char[sTemp.length() + 1];
+					strcpy(cTemp, sTemp.c_str());
+					strncpy(ans, cTemp, std::min<int>(1024, strlen(ans) + 1));
+
+
+
+				}
+				else
+				{
+					;
+				
+				}
+			}
 			break;
 
 		case '8':
@@ -141,7 +292,25 @@ void Server::processRequest(char req[], char ans[]) {
 				strcpy(test, R8->getVerantw().c_str());
 				strncpy(ans, test, std::min<int>(1024, strlen(ans) + 1));
 			}
-				
+			else
+			{
+				if (req[1] == 't')
+				{
+					rTemp = R8->tempSensor.getValue();
+					ss << setprecision(3) << rTemp;
+					sTemp = ss.str();
+					cTemp = new char[sTemp.length() + 1];
+					strcpy(cTemp, sTemp.c_str());
+					strncpy(ans, cTemp, std::min<int>(1024, strlen(ans) + 1));
+
+
+
+				}
+				else
+				{
+					;
+				}
+			}
 			break;
 
 		case '9':
@@ -155,6 +324,25 @@ void Server::processRequest(char req[], char ans[]) {
 				test = new char[R9->verantw.length() + 1];
 				strcpy(test, R9->getVerantw().c_str());
 				strncpy(ans, test, std::min<int>(1024, strlen(ans) + 1));
+			}
+			else
+			{
+				if (req[1] == 't')
+				{
+					rTemp = R9->tempSensor.getValue();
+					ss << setprecision(3) << rTemp;
+					sTemp = ss.str();
+					cTemp = new char[sTemp.length() + 1];
+					strcpy(cTemp, sTemp.c_str());
+					strncpy(ans, cTemp, std::min<int>(1024, strlen(ans) + 1));
+
+
+
+				}
+				else
+				{
+					;
+				}
 			}
 			break;
 

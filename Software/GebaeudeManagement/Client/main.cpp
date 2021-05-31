@@ -50,6 +50,8 @@ int main(int argc, char* argv[])
             cout << "2. Raumtemperatur anzeigen? (t)" << endl;
 
             cin >> wahl;
+
+            string vant;
             switch (wahl)
             {
             case 'v':
@@ -57,7 +59,7 @@ int main(int argc, char* argv[])
                 req[1] = wahl;
                 //strncpy_s(req, &wahl, 1);
                 cout << endl << "Geben Sie einen neuen Verantwortlichen ein:" << endl;
-                string vant;
+                
                 getline(cin, vant);
                 cin >> vant;
 
@@ -78,6 +80,7 @@ int main(int argc, char* argv[])
             case 't':
                 req[1] = wahl;
                 c.sendRequest(req, ans);
+                cout << "Raumtemperatur: " << ans << endl;
                 break;
 
             default:
