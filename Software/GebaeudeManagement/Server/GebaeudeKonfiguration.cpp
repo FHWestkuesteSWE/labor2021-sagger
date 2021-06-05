@@ -3,31 +3,64 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <fstream>
+#include <list>
 #include <iterator>
-#include "Server.h"
+
+using namespace std;
 
 
-bool GebaeudeKonfiguration::instanceFlag = false;
-GebaeudeKonfiguration* GebaeudeKonfiguration::GebKonfig = NULL;
+GebaeudeKonfiguration* GebaeudeKonfiguration::GebKonfig = nullptr;
+GebaeudeKonfiguration::GebaeudeKonfiguration() {
+
+}
 
 GebaeudeKonfiguration* GebaeudeKonfiguration::getInstance()
 {
-	if (!instanceFlag)
+	if (GebKonfig == nullptr)
 	{
 		GebKonfig = new GebaeudeKonfiguration();
-		instanceFlag = true;
-		return GebKonfig;
 	}
-	else
+	return GebKonfig;
+}
+
+void GebaeudeKonfiguration::init() {
+	ifstream rdat("Raeume.dat");
+	//rdat.open("Raeume.dat");
+
+	int rnr; // Raumnummer
+	std::string rname; // Raumname;
+	
+	while (!rdat.fail())
 	{
-		return GebKonfig;
+		rdat >> rnr;
+		rdat >> rname;
+		raumByNr[rnr] = rname;
+	}
+	rdat.close();
+
+	std::list<Raum>::iterator it = GebaeudeKonfiguration::raumListe.begin();
+
+	for (int i = 1; i <= (int)raumByNr.size(); i++)
+	{
+		Raum newRoom(i, raumByNr[i]);
+		GebaeudeKonfiguration::raumListe.push_back(newRoom);
+		
+		// Advance the iterator by 2 positions,
+		// advance(it, i + 1);
+		//++it;
 	}
 
+
 }
 
-GebaeudeKonfiguration* GebaeudeKonfiguration::mapping()
-{
-	map<int, Raum*>mapRaeume();
-	// mapRaeume.insert(make_pair(1, Server::R1));
-	return 0;
+
+
+Raum* GebaeudeKonfiguration::RaumNummer(int rnr) {
+
+	string verantw = raumByNr[rnr];
+	
+	Raum* R = new Raum(rnr, verantw);
+	return R;
 }
+

@@ -1,9 +1,0 @@
-1,Laura Gersmeier	
-2,Eike Sagasser
-3,Hans Meier
-4,Hannelore Mais
-5,Ernst Kuzorra
-6,Heinz Tomate
-7.Ulla Richter
-8,Werner Hausmann
-9,Erna Kunze
