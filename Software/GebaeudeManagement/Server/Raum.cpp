@@ -12,7 +12,7 @@ string Raum::getVerantw() {
 
 void Raum::setVerantw(string req) {
 	this->verantw = "";
-	for (int i = 2; i < req.length(); i++)
+	for (int i = 5; i < req.length()+1; i++)
 	{
 		if (req[i] != NULL)
 		{

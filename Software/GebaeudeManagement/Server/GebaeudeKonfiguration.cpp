@@ -11,9 +11,7 @@ using namespace std;
 
 
 GebaeudeKonfiguration* GebaeudeKonfiguration::GebKonfig = nullptr;
-GebaeudeKonfiguration::GebaeudeKonfiguration() {
-
-}
+GebaeudeKonfiguration::GebaeudeKonfiguration() {}
 
 GebaeudeKonfiguration* GebaeudeKonfiguration::getInstance()
 {
@@ -24,7 +22,7 @@ GebaeudeKonfiguration* GebaeudeKonfiguration::getInstance()
 	return GebKonfig;
 }
 
-void GebaeudeKonfiguration::init() {
+void /* std::list<Raum>raumListe */ GebaeudeKonfiguration::init() {
 	ifstream rdat("Raeume.dat");
 	//rdat.open("Raeume.dat");
 
@@ -51,7 +49,8 @@ void GebaeudeKonfiguration::init() {
 		//++it;
 	}
 
-
+	return;
+	// return GebaeudeKonfiguration::raumListe
 }
 
 

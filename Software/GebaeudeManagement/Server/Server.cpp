@@ -8,15 +8,29 @@
 #include <fstream>
 #include <string>
 #include <iomanip>
+#include "GebaeudeKonfiguration.h"
+
+
 
 Server::Server()
 {
+	
+	
 }
 
 
 void Server::start(char port[]) {
+
+	GebaeudeKonfiguration* gebKonfig = GebaeudeKonfiguration::getInstance();
+	gebKonfig->init();
 		
 	BasicServer::start(port);
+
+	
+	
+
+	
+	/*
 	string filename;
 	cout << "Datei: ";
 	cin >> filename;
@@ -36,6 +50,9 @@ void Server::start(char port[]) {
 		std::cout << line << '\n';
 	}
 	
+	
+	*/
+	
 
 
 
@@ -48,6 +65,54 @@ void Server::processRequest(char req[], char ans[]) {
 	float rTemp;
 	string sTemp /*= to_string(rTemp)*/;
 	stringstream ss;
+	
+
+	std::list<Raum>::iterator iter =  GebaeudeKonfiguration::getInstance()->raumListe.begin();
+	for (int i = 0; i <= (int) GebaeudeKonfiguration::getInstance()->raumListe.size(); i++)
+	{
+		int i_req = 0;
+		sscanf(req, "%d", &i_req);
+
+
+		if (i_req == iter->rnr)
+		{
+			test = new char[iter->verantw.length() + 1];
+			strcpy(test, iter->getVerantw().c_str());
+			strncpy(ans, test, std::min<int>(1024, strlen(ans) + 1));
+			if (req[4] == 'v')
+			{
+				iter->setVerantw(req);
+				test = new char[iter->verantw.length() + 1];
+				strcpy(test, iter->getVerantw().c_str());
+				strncpy(ans, test, std::min<int>(1024, strlen(test) + 1));
+			}
+			else if(req[4] == 't')
+			{
+				rTemp = iter->tempSensor.getValue();
+				ss << setprecision(3) << rTemp;
+				sTemp = ss.str();
+				cTemp = new char[sTemp.length() + 1];
+				strcpy(cTemp, sTemp.c_str());
+				strncpy(ans, cTemp, std::min<int>(1024, strlen(cTemp) + 1));
+			}
+			else
+			{
+				//;
+			}
+		}
+
+		if (i < (int)GebaeudeKonfiguration::getInstance()->raumListe.size() - 1)
+		{
+			// Advance the iterator by 4 positions,
+			std::advance(iter, 1);
+		}
+		
+
+
+		//it++;
+	}
+
+/*
 
 	switch (req[0])
 	{
@@ -351,6 +416,8 @@ void Server::processRequest(char req[], char ans[]) {
 			strcpy(test, "Raum existiert nicht");
 			strncpy(ans, test, std::min<int>(1024, strlen(ans) + 1));
 	}
+
+	*/
 }
 
 Server::~Server()

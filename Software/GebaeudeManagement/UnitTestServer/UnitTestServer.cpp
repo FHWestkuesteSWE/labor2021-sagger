@@ -16,10 +16,10 @@ namespace UnitTestServer
 
 			std::list<Raum>::iterator it = gebKonfig->raumListe.begin();
 
-			// Advance the iterator by 2 positions,
-			std::advance(it, 2);
+			// Advance the iterator by 4 positions,
+			std::advance(it, 4);
 
-			Assert::AreEqual(3,it->rnr);
+			Assert::AreEqual(5,it->rnr);
 		}
 		
 	
@@ -31,10 +31,10 @@ namespace UnitTestServer
 
 			std::list<Raum>::iterator it = gebKonfig->raumListe.begin();
 
-			// Advance the iterator by 5 positions,
-			std::advance(it, 5);
+			// Advance the iterator by 6 positions,
+			std::advance(it, 6);
 
-			Assert::AreEqual((std::string)"Heinz", it->verantw);
+			Assert::AreEqual((std::string)"Ulla", it->verantw);
 
 		}			
 		

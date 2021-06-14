@@ -3,8 +3,6 @@
 #include <stdlib.h>
 #include <map>
 #include <string>
-#include <iterator>
-#include <map>
 #include <list>
 #include "Raum.h"
 
@@ -12,25 +10,23 @@ using namespace std;
 
 class GebaeudeKonfiguration
 {
+public:
+	static GebaeudeKonfiguration* getInstance();
+	Raum* RaumNummer(int rnr);
+	void init();
+
+	std::list<Raum> raumListe;
+
+	
+	// ~GebaeudeKonfiguration() {};
+	
+	
 private:
 	static GebaeudeKonfiguration* GebKonfig;
-	
-
-	GebaeudeKonfiguration(); // privater Konstruktor
-
+	GebaeudeKonfiguration() /*{}*/; // privater Konstruktor
+	// ~GebaeudeKonfiguration() {};
 	std::map<int, std::string> raumByNr; // Mapping-Funktion
 
-public:
-	std::list<Raum> raumListe;
-	Raum* /*std::string*/ RaumNummer(int rnr);
-	static GebaeudeKonfiguration* getInstance();
-	void init();
 	
-
-	~GebaeudeKonfiguration()
-	{
-	
-	}
-
 };
 

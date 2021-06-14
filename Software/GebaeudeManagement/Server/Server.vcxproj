@@ -166,7 +166,9 @@
     <ClInclude Include="TempSensor.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Raeume.dat" />
+    <CopyFileToFolders Include="Raeume.dat">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
