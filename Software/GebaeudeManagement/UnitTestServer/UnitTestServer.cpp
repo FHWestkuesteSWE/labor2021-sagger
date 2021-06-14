@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "GebaeudeKonfiguration.h"
+#include "Sensor.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -36,7 +37,20 @@ namespace UnitTestServer
 
 			Assert::AreEqual((std::string)"Ulla", it->verantw);
 
-		}			
+		}	
+
+		TEST_METHOD(TestRaumTemperatur)
+		{
+			Sensor s;
+			float rTemp = s.getValue();
+			constexpr float FLOAT_MIN = 15.0;
+			constexpr float FLOAT_MAX = 30.0;
+
+			bool rTempGT15ST30 = (rTemp >= FLOAT_MIN) && (rTemp <= FLOAT_MAX);
+
+			Assert::IsTrue(rTempGT15ST30);
+
+		}
 		
 	};
 }

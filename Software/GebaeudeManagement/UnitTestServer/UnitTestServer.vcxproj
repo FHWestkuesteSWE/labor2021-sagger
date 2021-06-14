@@ -100,7 +100,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>C:\Users\Laura\Documents\Studium\Master\SoSe21\ZuverlässigeSoftwaresysteme\Labor\ClassroomUnterlagen\labor2021-sagger\Software\GebaeudeManagement\Server\x64\Debug;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>GebaeudeKonfiguration.obj;Raum.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>GebaeudeKonfiguration.obj;Raum.obj;Sensor.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
